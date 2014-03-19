@@ -43,6 +43,10 @@ def test_datetime_accepts_datetime():
     assert dt_type(dt) == dt
     assert dt_type.to_primitive(dt) == output
 
+def test_datetime_format_string():
+    dt_input = '2013.03.07 15:31'
+    dt = datetime.datetime(2013, 3, 7, 15, 31)
+    assert DateTimeType(formats='%Y.%m.%d %H:%M')(dt_input) == dt
 
 def test_int():
     with pytest.raises(ConversionError):
